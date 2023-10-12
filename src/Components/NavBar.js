@@ -7,6 +7,7 @@ function NavBar() {
     <div className="navbar"> 
       <LogoHeader />
       <SearchBar />
+      <br></br>
     </div>
   );
 }

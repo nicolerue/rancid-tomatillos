@@ -8,9 +8,9 @@ function Movie({ movieObj }) {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        boxShadow: "5px 5px 10px"
       }}
     >
-      <h2>{`${movieObj.title} (${movieObj.release_date.slice(0, 4)})`}</h2>
       <img
         src={movieObj.poster_path}
         alt={movieObj.title}
