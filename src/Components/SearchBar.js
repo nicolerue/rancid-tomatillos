@@ -1,7 +1,15 @@
+import { useState } from 'react'
+
 function SearchBar() {
   return (
     <div>
-      <h1>Search Bar</h1>
+      <input 
+      type='text'
+      placeholder='Search....'
+      />
+      <button>
+        <span role='img' aria-label='search-icon'>🔍</span>
+      </button>
     </div>
   );
 }
