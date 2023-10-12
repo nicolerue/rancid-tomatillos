@@ -1,7 +1,19 @@
-function Display() {
+import Movie from "./Movie";
+
+function Display({ movieData }) {
   return (
-    <div>
-      <h1>Display</h1>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        gap: "5rem",
+        marginLeft: "5rem",
+        marginRight: "5rem",
+      }}
+    >
+      {movieData.movies.map((movie) => {
+        return <Movie key={movie.id} movieObj={movie} />;
+      })}
     </div>
   );
 }
