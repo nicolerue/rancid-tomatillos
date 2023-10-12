@@ -1,6 +1,13 @@
 import Movie from "./Movie";
 
-function Display({ movieData }) {
+function Display({
+  movieData,
+  setModalIsOpen,
+  modalIsOpen,
+  selectedMovieID,
+  setSelectedMovieID,
+  apiMovieData,
+}) {
   return (
     <div
       style={{
@@ -11,8 +18,17 @@ function Display({ movieData }) {
         marginRight: "5rem",
       }}
     >
-      {movieData.movies.map((movie) => {
-        return <Movie key={movie.id} movieObj={movie} />;
+      {apiMovieData.map((movie) => {
+        return (
+          <Movie
+            key={movie.id}
+            movieObj={movie}
+            setModalIsOpen={setModalIsOpen}
+            modalIsOpen={modalIsOpen}
+            selectedMovieID={selectedMovieID}
+            setSelectedMovieID={setSelectedMovieID}
+          />
+        );
       })}
     </div>
   );
