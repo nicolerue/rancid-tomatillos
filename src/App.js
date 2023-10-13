@@ -16,13 +16,13 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setApiMovieData(data.movies);
-        console.log(data.movies);
       })
       .catch((err) => console.log(err));
   }
   useEffect(() => {
     getMoviesFromApi();
   }, []);
+
   return (
     <main>
       <NavBar />

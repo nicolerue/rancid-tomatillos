@@ -1,7 +1,6 @@
 import Movie from "./Movie";
 
 function Display({
-  movieData,
   setModalIsOpen,
   modalIsOpen,
   selectedMovieID,

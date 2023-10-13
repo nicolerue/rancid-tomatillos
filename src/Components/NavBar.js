@@ -4,9 +4,10 @@ import SearchBar from "./SearchBar";
 
 function NavBar() {
   return (
-    <div className="navbar">
+    <div className="navbar"> 
       <LogoHeader />
       <SearchBar />
+      <br></br>
     </div>
   );
 }
