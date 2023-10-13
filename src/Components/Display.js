@@ -1,6 +1,6 @@
 import Movie from "./Movie";
 
-function Display({ movieData }) {
+function Display({ movieData, setModalIsOpen }) {
   return (
     <div
       style={{
@@ -12,7 +12,7 @@ function Display({ movieData }) {
       }}
     >
       {movieData.movies.map((movie) => {
-        return <Movie key={movie.id} movieObj={movie} />;
+        return <Movie key={movie.id} movieObj={movie} setModalIsOpen={setModalIsOpen}/>;
       })}
     </div>
   );
