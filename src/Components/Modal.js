@@ -16,7 +16,7 @@ function Modal({
     )
       .then((res) => res.json())
       .then((data) => {
-        setSelectedMovieObj.movie(data);
+        setSelectedMovieObj(data);
         console.log(data);
       })
       .catch((err) => console.log(err));
@@ -25,10 +25,6 @@ function Modal({
   useEffect(() => {
     getSingleMovieApi();
   }, []);
-
-  // const movieToDisplay = apiMovieData.find(
-  //   (movie) => movie.id === selectedMovie
-  // );
 
   function handleBackArrowClick() {
     setModalIsOpen(false);
@@ -39,7 +35,7 @@ function Modal({
         display: "flex",
         gap: "5rem",
         color: "white",
-        height: "100vh",
+        height: "70vh",
         backgroundImage: `linear-gradient(
           rgba(15, 15, 15, 0.6),
       rgba(15, 15, 15, 0.6)
