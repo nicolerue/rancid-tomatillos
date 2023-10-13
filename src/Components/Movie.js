@@ -1,6 +1,11 @@
 import StarRating from "./StarRating";
 
-function Movie({ movieObj }) {
+function Movie({ movieObj, setModalIsOpen }) {
+
+  function handleImageClick() {
+    setModalIsOpen(true)
+  }
+
   return (
     <div
       style={{
@@ -22,6 +27,7 @@ function Movie({ movieObj }) {
           display: "block",
           margin: "0 auto",
         }}
+        onClick={handleImageClick}
       />
       <span>
         <StarRating rating={Math.round(movieObj.average_rating)} />
