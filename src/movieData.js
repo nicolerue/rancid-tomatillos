@@ -1,14 +1,38 @@
 const movieData = {
   movies: [
     {
-      id: 694919,
+      id: 1,
+      title: "Fake Movie Title",
       poster_path:
-        "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+        "https://image.tmdb.org/t/p/original//7G2VvG1lU8q758uOqU6z2Ds0qpA.jpg",
       backdrop_path:
-        "https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg",
-      title: "Money Plane",
-      average_rating: 6.666666666666667,
-      release_date: "2020-09-29",
+        "https://image.tmdb.org/t/p/original//oazPqs1z78LcIOFslbKtJLGlueo.jpg",
+      release_date: "2019-12-04",
+      overview:
+        "Some overview that is full of buzzwords to attempt to entice you to watch this movie! Explosions! Drama! True love! Robots! A cute dog!",
+      average_rating: 6,
+      genres: ["Drama"],
+      budget: 63000000,
+      revenue: 100853753,
+      runtime: 139,
+      tagline: "It's a movie!",
+    },
+    {
+      id: 2,
+      title: "Mulan",
+      poster_path:
+        "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg",
+      backdrop_path:
+        "https://image.tmdb.org/t/p/original//zzWGRw277MNoCs3zhyG3YmYQsXv.jpg",
+      release_date: "2019-12-04",
+      overview:
+        "Some overview that is full of buzzwords to attempt to entice you to watch this movie! Explosions! Drama! True love! Robots! A cute dog!",
+      average_rating: 6,
+      genres: ["Drama"],
+      budget: 63000000,
+      revenue: 100853753,
+      runtime: 139,
+      tagline: "It's a movie!",
     },
     {
       id: 337401,

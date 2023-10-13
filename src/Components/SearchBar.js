@@ -1,18 +1,12 @@
-import { useState } from 'react'
-import './SearchBar.scss'
+import { useState } from "react";
+import "./SearchBar.scss";
 
 function SearchBar() {
   return (
-    <div className='search-container'>
-      <input 
-      type='text'
-      class='search-input'
-      placeholder='Search....'
-      />
+    <div className="search-container">
+      <input type="text" className="search-input" placeholder="Search...." />
       <button>
-        <span role='img' 
-        class='search-icon' 
-        aria-label='search-icon'>
+        <span role="img" className="search-icon" aria-label="search-icon">
           🔍
         </span>
       </button>

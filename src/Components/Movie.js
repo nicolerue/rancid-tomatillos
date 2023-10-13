@@ -1,33 +1,42 @@
 import StarRating from "./StarRating";
+import "./Movie.scss";
 
-function Movie({ movieObj, setModalIsOpen }) {
-
-  function handleImageClick() {
-    setModalIsOpen(true)
+function Movie({
+  movieObj,
+  setModalIsOpen,
+  modalIsOpen,
+  selectedMovieID,
+  setSelectedMovieID,
+}) {
+  function handleMovieClick(e) {
+    setModalIsOpen(true);
+    setSelectedMovieID(parseInt(e.target.id));
   }
 
   return (
     <div
+      id={movieObj.id}
       style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        boxShadow: "5px 5px 10px"
       }}
     >
       <img
+        id={movieObj.id}
         src={movieObj.poster_path}
         alt={movieObj.title}
+        className="movieImg"
         style={{
-          maxWidth: "100%",
-          maxHeight: "100%",
-          width: "auto",
-          height: "auto",
+          width: "200px",
+          height: "300px",
+          // width: "auto",
+          // height: "auto",
           display: "block",
           margin: "0 auto",
         }}
-        onClick={handleImageClick}
+        onClick={handleMovieClick}
       />
       <span>
         <StarRating rating={Math.round(movieObj.average_rating)} />
