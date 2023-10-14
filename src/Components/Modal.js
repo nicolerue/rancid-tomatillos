@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import StarRating from './StarRating'
 
-import "./Modal.scss";
+import './Modal.scss';
 
 function Modal({
   selectedMovieID,
@@ -10,14 +11,14 @@ function Modal({
 }) {
   function getSingleMovieApi() {
     fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2//movies/${selectedMovieID}`
+      `https://rancid-tomatillos.herokuapp.com/api/v2//movies/${selectedMovieID}`,
     )
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         setSelectedMovieObj(data);
         console.log(data);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }
 
   useEffect(() => {
@@ -31,12 +32,13 @@ function Modal({
   return (
     <div>
       {selectedMovieObj.movie ? (
-        <div className="backdrop-image"
+        <div
+          className="backdrop-image"
           style={{
-            display: "flex",
-            gap: "5rem",
-            color: "white",
-            height: "70vh",
+            display: 'flex',
+            gap: '5rem',
+            color: 'white',
+            height: '100vh',
             backgroundImage: `linear-gradient(
       rgba(15, 15, 15, 0.6),
   rgba(15, 15, 15, 0.6)
@@ -46,9 +48,9 @@ function Modal({
           <div
             className="BackToDisplay"
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
             <svg
@@ -58,7 +60,7 @@ function Modal({
               strokeWidth="1.5"
               stroke="currentColor"
               className="backArrow"
-              style={{ height: "100px", width: "100px" }}
+              style={{ height: '100px', width: '100px' }}
               onClick={handleBackArrowClick}
             >
               <path
@@ -67,15 +69,32 @@ function Modal({
                 d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
               />
             </svg>
-            <p>Back</p>
           </div>
           <div className="movieDetails">
-            <h1>{selectedMovieObj.movie.title}</h1>
-            <h2>Release Date: {selectedMovieObj.movie.releaseDate}</h2>
-            <h2>Budget: {selectedMovieObj.movie.budget}</h2>
-            <h2>Revenue ${selectedMovieObj.movie.revenue}</h2>
-            <h2>Overview: {selectedMovieObj.movie.overview}</h2>
-            <h2>Average Rating: {selectedMovieObj.movie.average_rating}/10</h2>
+          <img
+  id={selectedMovieObj.movie.id}
+  src={selectedMovieObj.movie.poster_path}
+  alt={selectedMovieObj.movie.title}
+  className="movie-image"
+  style={{
+    width: '200px',
+    height: '300px'
+  }}
+/>
+            <div className="movie-title">{selectedMovieObj.movie.title}</div>
+            <h2>
+              <span className="label">Release Date:</span>{' '}
+              <br></br>
+              <br></br>
+              {selectedMovieObj.movie.release_date}
+            </h2>
+            <h2>
+              <span className="label">Average Rating:</span>{' '}
+            <StarRating rating={Math.round(selectedMovieObj.movie.average_rating)} />
+            </h2>
+            <h2>
+              {selectedMovieObj.movie.overview}
+            </h2>
           </div>
         </div>
       ) : (
@@ -84,5 +103,6 @@ function Modal({
     </div>
   );
 }
+           
 
 export default Modal;

@@ -3,5 +3,14 @@
   cursor: pointer;
 }
 h2 {
-  color: white;
+  color: whitesmoke;
+}
+
+.movie {
+  box-shadow: 5px 5px 10px rgb(145, 137, 137); 
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center,
 }
