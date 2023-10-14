@@ -31,7 +31,7 @@ function Modal({
   return (
     <div>
       {selectedMovieObj.movie ? (
-        <div
+        <div className="backdrop-image"
           style={{
             display: "flex",
             gap: "5rem",
