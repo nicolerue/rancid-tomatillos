@@ -14,14 +14,8 @@ function Movie({
   }
 
   return (
-    <div
+    <div className='movie'
       id={movieObj.id}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
     >
       <img
         id={movieObj.id}
@@ -31,8 +25,6 @@ function Movie({
         style={{
           width: "200px",
           height: "300px",
-          // width: "auto",
-          // height: "auto",
           display: "block",
           margin: "0 auto",
         }}
