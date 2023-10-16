@@ -14,9 +14,7 @@ function Movie({
   }
 
   return (
-    <div className='movie'
-      id={movieObj.id}
-    >
+    <div className="movie" id={movieObj.id}>
       <img
         id={movieObj.id}
         src={movieObj.poster_path}

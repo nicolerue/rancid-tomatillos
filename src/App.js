@@ -10,27 +10,29 @@ function App() {
   const [selectedMovieID, setSelectedMovieID] = useState("");
   const [apiMovieData, setApiMovieData] = useState([]);
   const [selectedMovieObj, setSelectedMovieObj] = useState({});
-  const [error, setError] = useState(null)
+  const [selectedMovieTrailerLink, setSelectedMovieTrailerLink] = useState("");
+  const [error, setError] = useState(null);
 
- 
   function getMoviesFromApi() {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Oops! Something went wrong on the server. Please try again later.");
+          throw new Error(
+            "Oops! Something went wrong on the server. Please try again later."
+          );
         } else {
           return res.json();
         }
       })
       .then((data) => {
-          setApiMovieData(data.movies);
+        setApiMovieData(data.movies);
       })
       .catch((error) => {
-        setError(error.message || 'An unknown error occurred.');
-        console.log(error)
+        setError(error.message || "An unknown error occurred.");
+        console.log(error);
       });
   }
-  
+
   useEffect(() => {
     getMoviesFromApi();
   }, []);
@@ -38,7 +40,7 @@ function App() {
   return (
     <main>
       <NavBar />
-      {error && <div className='error-message'>{error}</div>}
+      {error && <div className="error-message">{error}</div>}
       {!modalIsOpen ? (
         <Display
           movieData={movieData}
@@ -57,6 +59,8 @@ function App() {
           setSelectedMovieID={setSelectedMovieID}
           selectedMovieObj={selectedMovieObj}
           setSelectedMovieObj={setSelectedMovieObj}
+          selectedMovieTrailerLink={selectedMovieTrailerLink}
+          setSelectedMovieTrailerLink={setSelectedMovieTrailerLink}
         />
       )}
     </main>
