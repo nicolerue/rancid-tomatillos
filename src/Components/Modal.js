@@ -1,28 +1,49 @@
-import { useEffect } from 'react';
-import StarRating from './StarRating'
+import { useEffect } from "react";
+import StarRating from "./StarRating";
 
-import './Modal.scss';
+import "./Modal.scss";
+
+import YoutubeEmbedVideo from "youtube-embed-video";
 
 function Modal({
   selectedMovieID,
   setModalIsOpen,
   selectedMovieObj,
   setSelectedMovieObj,
+  selectedMovieTrailerLink,
+  setSelectedMovieTrailerLink,
 }) {
   function getSingleMovieApi() {
     fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2//movies/${selectedMovieID}`,
+      `https://rancid-tomatillos.herokuapp.com/api/v2//movies/${selectedMovieID}`
     )
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setSelectedMovieObj(data);
         console.log(data);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
+  }
+
+  function getSingleMovieVideoApi() {
+    fetch(
+      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${selectedMovieID}/videos`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const trailer = data.videos.find((video) => {
+          return video.type === "Trailer";
+        });
+        console.log(trailer);
+        const trailerKey = trailer.key;
+        setSelectedMovieTrailerLink(trailerKey);
+      })
+      .catch((err) => console.log(err));
   }
 
   useEffect(() => {
     getSingleMovieApi();
+    getSingleMovieVideoApi();
   }, []);
 
   function handleBackArrowClick() {
@@ -35,10 +56,10 @@ function Modal({
         <div
           className="backdrop-image"
           style={{
-            display: 'flex',
-            gap: '5rem',
-            color: 'white',
-            height: '100vh',
+            display: "flex",
+            gap: "5rem",
+            color: "white",
+            height: "100vh",
             backgroundImage: `linear-gradient(
       rgba(15, 15, 15, 0.6),
   rgba(15, 15, 15, 0.6)
@@ -48,9 +69,9 @@ function Modal({
           <div
             className="BackToDisplay"
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
             <svg
@@ -60,7 +81,7 @@ function Modal({
               strokeWidth="1.5"
               stroke="currentColor"
               className="backArrow"
-              style={{ height: '100px', width: '100px' }}
+              style={{ height: "100px", width: "100px" }}
               onClick={handleBackArrowClick}
             >
               <path
@@ -71,30 +92,35 @@ function Modal({
             </svg>
           </div>
           <div className="movieDetails">
-          <img
-  id={selectedMovieObj.movie.id}
-  src={selectedMovieObj.movie.poster_path}
-  alt={selectedMovieObj.movie.title}
-  className="movie-image"
-  style={{
-    width: '200px',
-    height: '300px'
-  }}
-/>
+            <img
+              id={selectedMovieObj.movie.id}
+              src={selectedMovieObj.movie.poster_path}
+              alt={selectedMovieObj.movie.title}
+              className="movie-image"
+              style={{
+                width: "200px",
+                height: "300px",
+              }}
+            />
             <div className="movie-title">{selectedMovieObj.movie.title}</div>
             <h2>
-              <span className="label">Release Date:</span>{' '}
-              <br></br>
+              <span className="label">Release Date:</span> <br></br>
               <br></br>
               {selectedMovieObj.movie.release_date}
             </h2>
             <h2>
-              <span className="label">Average Rating:</span>{' '}
-            <StarRating rating={Math.round(selectedMovieObj.movie.average_rating)} />
+              <span className="label">Average Rating:</span>{" "}
+              <StarRating
+                rating={Math.round(selectedMovieObj.movie.average_rating)}
+              />
             </h2>
-            <h2>
-              {selectedMovieObj.movie.overview}
-            </h2>
+            <h2>{selectedMovieObj.movie.overview}</h2>
+            {selectedMovieTrailerLink && (
+              <YoutubeEmbedVideo
+                videoId={selectedMovieTrailerLink}
+                suggestions={false}
+              />
+            )}
           </div>
         </div>
       ) : (
@@ -103,6 +129,5 @@ function Modal({
     </div>
   );
 }
-           
 
 export default Modal;
