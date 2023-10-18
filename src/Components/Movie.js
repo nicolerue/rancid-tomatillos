@@ -1,18 +1,27 @@
 import StarRating from "./StarRating";
 import "./Movie.scss";
-
+import { useNavigate } from "react-router-dom";
 function Movie({
   movieObj,
   setModalIsOpen,
   modalIsOpen,
-  selectedMovieID,
   setSelectedMovieID,
 }) {
-  function handleMovieClick(e) {
-    setModalIsOpen(true);
-    setSelectedMovieID(parseInt(e.target.id));
-  }
+  const navigate = useNavigate();
+  const toggleModal = () => {
+    setModalIsOpen(!modalIsOpen);
+    if (!modalIsOpen) {
+      localStorage.setItem('modalState', 'open');
+    } else {
+      localStorage.removeItem('modalState');
+    }
+  };
 
+  function handleMovieClick(e) {
+    toggleModal();
+    setSelectedMovieID(parseInt(e.target.id));
+    navigate(`/${parseInt(e.target.id)}`);
+  }
   return (
     <div className="movie" id={movieObj.id}>
       <img
@@ -34,5 +43,4 @@ function Movie({
     </div>
   );
 }
-
 export default Movie;
