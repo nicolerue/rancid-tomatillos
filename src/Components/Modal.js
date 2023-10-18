@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import StarRating from "./StarRating";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 import "./Modal.scss";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import YoutubeEmbedVideo from "youtube-embed-video";
 
 function Modal({
@@ -11,9 +11,12 @@ function Modal({
   setSelectedMovieObj,
   selectedMovieTrailerLink,
   setSelectedMovieTrailerLink,
+  modalIsOpen,
+  setSelectedMovieID,
 }) {
-  const paramsID = useParams()
-  const navigate = useNavigate()
+  const paramsID = useParams();
+  const navigate = useNavigate();
+
   function getSingleMovieApi() {
     fetch(
       `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}`
@@ -43,15 +46,15 @@ function Modal({
   useEffect(() => {
     getSingleMovieApi();
     getSingleMovieVideoApi();
-  }, [selectedMovieObj])
+    setSelectedMovieObj(selectedMovieObj);
+  }, []);
 
   function handleBackArrowClick() {
-    setModalIsOpen(false)
-    localStorage.removeItem('modalState');
-    navigate('/');
+    setModalIsOpen(false);
+    navigate("/");
   }
 
-  console.log(useParams())
+  console.log(useParams());
   return (
     <div>
       {selectedMovieObj.movie ? (
