@@ -1,0 +1,130 @@
+{
+  "videos": [
+    {
+      "id": 19,
+      "movie_id": 724495,
+      "key": "XGzVWlvgBdA",
+      "site": "YouTube",
+      "type": "Featurette"
+    },
+    {
+      "id": 20,
+      "movie_id": 724495,
+      "key": "IQVhSFMnIyQ",
+      "site": "YouTube",
+      "type": "Featurette"
+    },
+    {
+      "id": 22,
+      "movie_id": 724495,
+      "key": "seQbgcZ09xw",
+      "site": "YouTube",
+      "type": "Behind the Scenes"
+    },
+    {
+      "id": 23,
+      "movie_id": 724495,
+      "key": "vcGC9FH1Fpw",
+      "site": "YouTube",
+      "type": "Behind the Scenes"
+    },
+    {
+      "id": 24,
+      "movie_id": 724495,
+      "key": "2vSXAhOjeEo",
+      "site": "YouTube",
+      "type": "Clip"
+    },
+    {
+      "id": 25,
+      "movie_id": 724495,
+      "key": "NhMsSpiEBbA",
+      "site": "YouTube",
+      "type": "Clip"
+    },
+    {
+      "id": 18,
+      "movie_id": 724495,
+      "key": "7wlWhevF2y4",
+      "site": "YouTube",
+      "type": "Clip"
+    },
+    {
+      "id": 26,
+      "movie_id": 724495,
+      "key": "Fyb83j9lksU",
+      "site": "YouTube",
+      "type": "Clip"
+    },
+    {
+      "id": 27,
+      "movie_id": 724495,
+      "key": "Wqg3JdoZhgM",
+      "site": "YouTube",
+      "type": "Clip"
+    },
+    {
+      "id": 28,
+      "movie_id": 724495,
+      "key": "nfFN3tQnNsY",
+      "site": "YouTube",
+      "type": "Behind the Scenes"
+    },
+    {
+      "id": 29,
+      "movie_id": 724495,
+      "key": "1DHp1KR_dtc",
+      "site": "YouTube",
+      "type": "Teaser"
+    },
+    {
+      "id": 30,
+      "movie_id": 724495,
+      "key": "Ey-4YUjvZUU",
+      "site": "YouTube",
+      "type": "Teaser"
+    },
+    {
+      "id": 31,
+      "movie_id": 724495,
+      "key": "k59i1g7ghew",
+      "site": "YouTube",
+      "type": "Teaser"
+    },
+    {
+      "id": 32,
+      "movie_id": 724495,
+      "key": "y_zLNC7cs6M",
+      "site": "YouTube",
+      "type": "Featurette"
+    },
+    {
+      "id": 33,
+      "movie_id": 724495,
+      "key": "K2L5emtYCUs",
+      "site": "YouTube",
+      "type": "Behind the Scenes"
+    },
+    {
+      "id": 34,
+      "movie_id": 724495,
+      "key": "0Mu74OixF8k",
+      "site": "YouTube",
+      "type": "Behind the Scenes"
+    },
+    {
+      "id": 35,
+      "movie_id": 724495,
+      "key": "44pboZrnPTY",
+      "site": "YouTube",
+      "type": "Featurette"
+    },
+    {
+      "id": 36,
+      "movie_id": 724495,
+      "key": "3RDaPV_rJ1Y",
+      "site": "YouTube",
+      "type": "Trailer"
+    }
+  ]
+}

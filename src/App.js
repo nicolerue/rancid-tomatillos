@@ -1,45 +1,50 @@
-import "./App.scss";
-import Display from "./Components/Display";
-import NavBar from "./Components/NavBar";
-import Modal from "./Components/Modal";
-import movieData from "./movieData.js";
-import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import './App.scss';
+import Display from './Components/Display';
+import NavBar from './Components/NavBar';
+import Modal from './Components/Modal';
+import movieData from './movieData.js';
+import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [displayOpen, setDisplayOpen] = useState(true);
-  const [selectedMovieID, setSelectedMovieID] = useState("");
+  // const [displayOpen, setDisplayOpen] = useState(true);
+  const [selectedMovieID, setSelectedMovieID] = useState('');
   const [apiMovieData, setApiMovieData] = useState([]);
   const [selectedMovieObj, setSelectedMovieObj] = useState({});
-  const [selectedMovieTrailerLink, setSelectedMovieTrailerLink] = useState("");
+  const [selectedMovieTrailerLink, setSelectedMovieTrailerLink] = useState('');
   const [error, setError] = useState(null);
+
   function getMoviesFromApi() {
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then((res) => {
+    return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+      .then(res => {
         if (!res.ok) {
           throw new Error(
-            "Oops! Something went wrong on the server. Please try again later."
+            'Oops! Something went wrong on the server. Please try again later.'
           );
-        } else {
+        } 
           return res.json();
-        }
+        
       })
-      .then((data) => {
-        setApiMovieData(data.movies);
+    }
+    
+    useEffect(() => {
+      const modalStorage = localStorage.getItem('modalState');
+      if (modalStorage === 'open') {
+        setModalIsOpen(true);
+      }
+    })
+
+
+    useEffect(() => {
+      getMoviesFromApi()
+      .then(data => {
+        return setApiMovieData(data.movies);
       })
-      .catch((error) => {
-        setError(error.message || "An unknown error occurred.");
+      .catch(error => {
+        setError(error.message || 'An unknown error occurred.');
         console.log(error);
       });
-  }
-
-  useEffect(() => {
-    getMoviesFromApi();
-    const modalStorage = localStorage.getItem('modalState')
-    if(modalStorage === 'open') {
-      setModalIsOpen(true)
-      
-    }
+    
   }, []);
 
   return (
@@ -48,11 +53,9 @@ function App() {
       <Routes>
         {error && <div className="error-message">{error}</div>}
         {!modalIsOpen ? (
-        
           <Route
             path="/"
             element={
-              
               <Display
                 movieData={movieData}
                 apiMovieData={apiMovieData}

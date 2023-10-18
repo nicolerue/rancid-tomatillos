@@ -43,7 +43,7 @@ function Modal({
   useEffect(() => {
     getSingleMovieApi();
     getSingleMovieVideoApi();
-  }, []);
+  }, [selectedMovieObj])
 
   function handleBackArrowClick() {
     setModalIsOpen(false)
