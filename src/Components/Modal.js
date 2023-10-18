@@ -1,40 +1,39 @@
 import { useEffect } from "react";
 import StarRating from "./StarRating";
-
+import { useParams } from 'react-router-dom'
 import "./Modal.scss";
-
+import { useNavigate } from 'react-router-dom'
 import YoutubeEmbedVideo from "youtube-embed-video";
 
 function Modal({
-  selectedMovieID,
   setModalIsOpen,
   selectedMovieObj,
   setSelectedMovieObj,
   selectedMovieTrailerLink,
   setSelectedMovieTrailerLink,
 }) {
+  const paramsID = useParams()
+  const navigate = useNavigate()
   function getSingleMovieApi() {
     fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2//movies/${selectedMovieID}`
+      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}`
     )
       .then((res) => res.json())
       .then((data) => {
         setSelectedMovieObj(data);
-        console.log(data);
       })
       .catch((err) => console.log(err));
   }
 
   function getSingleMovieVideoApi() {
     fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${selectedMovieID}/videos`
+      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}/videos`
     )
       .then((res) => res.json())
       .then((data) => {
         const trailer = data.videos.find((video) => {
           return video.type === "Trailer";
         });
-        console.log(trailer);
         const trailerKey = trailer.key;
         setSelectedMovieTrailerLink(trailerKey);
       })
@@ -47,9 +46,12 @@ function Modal({
   }, []);
 
   function handleBackArrowClick() {
-    setModalIsOpen(false);
+    setModalIsOpen(false)
+    localStorage.removeItem('modalState');
+    navigate('/');
   }
 
+  console.log(useParams())
   return (
     <div>
       {selectedMovieObj.movie ? (
