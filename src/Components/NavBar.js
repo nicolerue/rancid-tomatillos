@@ -1,13 +1,17 @@
-import './NavBar.scss';
-import LogoHeader from './LogoHeader';
-import SearchBar from './SearchBar';
-import { Link } from 'react-router-dom';
+import "./NavBar.scss";
+import LogoHeader from "./LogoHeader";
+import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ setApiMovieData, setError, apiMovieData }) {
   return (
     <div className="navbar">
       <LogoHeader />
-      <SearchBar />
+      <SearchBar
+        setApiMovieData={setApiMovieData}
+        setError={setError}
+        apiMovieData={apiMovieData}
+      />
       <Link to="/"></Link>
       <br></br>
     </div>
