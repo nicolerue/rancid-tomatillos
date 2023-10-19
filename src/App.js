@@ -2,8 +2,7 @@ import "./App.scss";
 import Display from "./Components/Display";
 import NavBar from "./Components/NavBar";
 import Modal from "./Components/Modal";
-import movieData from "./movieData.js";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import PageNotFound from "./Components/PageNotFound";
 
@@ -29,7 +28,6 @@ function App() {
           path="/"
           element={
             <Display
-              movieData={movieData}
               apiMovieData={apiMovieData}
               modalIsOpen={modalIsOpen}
               setModalIsOpen={setModalIsOpen}
@@ -46,11 +44,6 @@ function App() {
           element={
             <Modal
               setModalIsOpen={setModalIsOpen}
-              modalIsOpen={modalIsOpen}
-              movieData={movieData}
-              apiMovieData={apiMovieData}
-              selectedMovieID={selectedMovieID}
-              setSelectedMovieID={setSelectedMovieID}
               selectedMovieObj={selectedMovieObj}
               setSelectedMovieObj={setSelectedMovieObj}
               selectedMovieTrailerLink={selectedMovieTrailerLink}

@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import StarRating from "./StarRating";
-import { useParams } from "react-router-dom";
-import "./Modal.scss";
-import { useNavigate } from "react-router-dom";
-import YoutubeEmbedVideo from "youtube-embed-video";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react';
+import StarRating from './StarRating';
+import { useParams } from 'react-router-dom';
+import './Modal.scss';
+import { useNavigate } from 'react-router-dom';
+import YoutubeEmbedVideo from 'youtube-embed-video';
+import PropTypes from 'prop-types';
 
 function Modal({
   setModalIsOpen,
@@ -12,35 +12,50 @@ function Modal({
   setSelectedMovieObj,
   selectedMovieTrailerLink,
   setSelectedMovieTrailerLink,
+  setError
 }) {
   const paramsID = useParams();
   const navigate = useNavigate();
+  // const [errorMessage, setErrorMessage] = useState('');
+
 
   function getSingleMovieApi() {
-    fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}`
-    )
-      .then((res) => res.json())
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Network response was not ok: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         setSelectedMovieObj(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError("Error fetching movie data: " + err.message);
+      });
   }
+  
 
   function getSingleMovieVideoApi() {
-    fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}/videos`
-    )
-      .then((res) => res.json())
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}/videos`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
         const trailer = data.videos.find((video) => {
-          return video.type === "Trailer";
+          return video.type === 'Trailer';
         });
         const trailerKey = trailer.key;
         setSelectedMovieTrailerLink(trailerKey);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError("Error fetching movie video: " + err.message);
+      });
   }
+  
 
   useEffect(() => {
     getSingleMovieApi();
@@ -50,31 +65,32 @@ function Modal({
 
   function handleBackArrowClick() {
     setModalIsOpen(false);
-    navigate("/");
+    navigate('/');
   }
-
   return (
     <div>
-      {selectedMovieObj.movie ? (
+      {setError ? (
+        <div className="error-message">{setError}</div>
+      ) : selectedMovieObj.movie ? (
         <div
           className="backdrop-image"
           style={{
-            display: "flex",
-            gap: "5rem",
-            color: "white",
-            height: "100vh",
+            display: 'flex',
+            gap: '5rem',
+            color: 'white',
+            height: '100vh',
             backgroundImage: `linear-gradient(
-      rgba(15, 15, 15, 0.6),
-  rgba(15, 15, 15, 0.6)
-    ), url(${selectedMovieObj.movie.backdrop_path})`,
+              rgba(15, 15, 15, 0.6),
+              rgba(15, 15, 15, 0.6)
+            ), url(${selectedMovieObj.movie.backdrop_path})`,
           }}
         >
           <div
             className="BackToDisplay"
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
             <svg
@@ -84,7 +100,7 @@ function Modal({
               strokeWidth="1.5"
               stroke="currentColor"
               className="backArrow"
-              style={{ height: "100px", width: "100px" }}
+              style={{ height: '100px', width: '100px' }}
               onClick={handleBackArrowClick}
             >
               <path
@@ -101,8 +117,8 @@ function Modal({
               alt={selectedMovieObj.movie.title}
               className="movie-image"
               style={{
-                width: "200px",
-                height: "300px",
+                width: '200px',
+                height: '300px',
               }}
             />
             <div className="movie-title">{selectedMovieObj.movie.title}</div>
@@ -112,7 +128,7 @@ function Modal({
               {selectedMovieObj.movie.release_date}
             </h2>
             <h2>
-              <span className="label">Average Rating:</span>{" "}
+              <span className="label">Average Rating:</span>{' '}
               <StarRating
                 rating={Math.round(selectedMovieObj.movie.average_rating)}
               />
@@ -127,7 +143,7 @@ function Modal({
           </div>
         </div>
       ) : (
-        <h2>Loading...</h2>
+        <h1>Loading...</h1>
       )}
     </div>
   );
