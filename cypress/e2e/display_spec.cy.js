@@ -23,6 +23,7 @@ describe("When the user clicks on a movie image", () => {
       "https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495/videos",
       {
         statusCode: 404,
+        // fixture: "single-movie-trailer-response",
       }
     );
   });
