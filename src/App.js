@@ -5,6 +5,8 @@ import Modal from "./Components/Modal";
 import movieData from "./movieData.js";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import PageNotFound from "./Components/PageNotFound";
+
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMovieID, setSelectedMovieID] = useState("");
@@ -56,6 +58,7 @@ function App() {
             />
           }
         />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </main>
   );
