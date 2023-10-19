@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "./Modal.scss";
 import { useNavigate } from "react-router-dom";
 import YoutubeEmbedVideo from "youtube-embed-video";
+import PropTypes from "prop-types";
 
 function Modal({
   setModalIsOpen,
@@ -11,8 +12,6 @@ function Modal({
   setSelectedMovieObj,
   selectedMovieTrailerLink,
   setSelectedMovieTrailerLink,
-  modalIsOpen,
-  setSelectedMovieID,
 }) {
   const paramsID = useParams();
   const navigate = useNavigate();
@@ -54,7 +53,6 @@ function Modal({
     navigate("/");
   }
 
-  console.log(useParams());
   return (
     <div>
       {selectedMovieObj.movie ? (
@@ -136,3 +134,11 @@ function Modal({
 }
 
 export default Modal;
+
+Modal.propTypes = {
+  setModalIsOpen: PropTypes.func,
+  selectedMovieObj: PropTypes.object,
+  setSelectedMovieObj: PropTypes.func,
+  selectedMovieTrailerLink: PropTypes.string,
+  setSelectedMovieTrailerLink: PropTypes.func,
+};

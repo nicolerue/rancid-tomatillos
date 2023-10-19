@@ -1,5 +1,6 @@
 import Movie from "./Movie";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 function Display({
   setModalIsOpen,
@@ -22,7 +23,6 @@ function Display({
         }
       })
       .then((data) => {
-        console.log(data);
         setApiMovieData(data.movies);
       })
       .catch((error) => {
@@ -64,3 +64,12 @@ function Display({
 }
 
 export default Display;
+
+Display.propTypes = {
+  setModalIsOpen: PropTypes.func,
+  modalIsOpen: PropTypes.bool,
+  setSelectedMovieID: PropTypes.func,
+  apiMovieData: PropTypes.array,
+  setError: PropTypes.func,
+  setApiMovieData: PropTypes.func,
+};
