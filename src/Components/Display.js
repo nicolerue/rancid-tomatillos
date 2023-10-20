@@ -1,6 +1,7 @@
 import Movie from "./Movie";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
+import { getMoviesFromApiDisplay } from "./apiCalls";
 
 function Display({
   setModalIsOpen,
@@ -11,27 +12,14 @@ function Display({
   setError,
   setApiMovieData,
 }) {
-  function getMoviesFromApi() {
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            "Oops! Something went wrong on the server. Please try again later."
-          );
-        } else {
-          return response.json();
-        }
-      })
-      .then((data) => {
+
+  useEffect(() => {
+    getMoviesFromApiDisplay().then((data) => {
         setApiMovieData(data.movies);
       })
       .catch((error) => {
         setError(error.message || "An unknown error occurred.");
       });
-  }
-
-  useEffect(() => {
-    getMoviesFromApi();
     setApiMovieData(apiMovieData);
     setModalIsOpen(false);
   }, []);

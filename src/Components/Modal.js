@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
-import StarRating from './StarRating';
-import { useParams } from 'react-router-dom';
-import './Modal.scss';
-import { useNavigate } from 'react-router-dom';
-import YoutubeEmbedVideo from 'youtube-embed-video';
-import PropTypes from 'prop-types';
+import { useEffect } from "react";
+import StarRating from "./StarRating";
+import { useParams } from "react-router-dom";
+import "./Modal.scss";
+import { useNavigate } from "react-router-dom";
+import YoutubeEmbedVideo from "youtube-embed-video";
+import PropTypes from "prop-types";
+import { getSingleMovieApi } from "./apiCalls";
+import { getSingleMovieVideoApi } from "./apiCalls";
+
+
 
 function Modal({
   setModalIsOpen,
@@ -19,48 +23,21 @@ function Modal({
   const [error, setErrorMessage] = useState('');
 
 
-  function getSingleMovieApi() {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Network response was not ok: ${res.status}`);
-        }
-        return res.json();
-      })
+
+  useEffect(() => {
+    getSingleMovieApi(paramsID.id)
       .then((data) => {
         setSelectedMovieObj(data);
       })
-      .catch((err) => {
-        setError("Error fetching movie data: " + err.message);
-      });
-  }
-  
-
-  function getSingleMovieVideoApi() {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}/videos`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+      .catch((err) => console.log(err));
+    getSingleMovieVideoApi(paramsID.id)
       .then((data) => {
-        const trailer = data.videos.find((video) => {
-          return video.type === 'Trailer';
-        });
-        const trailerKey = trailer.key;
+        const trailerKey = data.videos.find((video) => {
+          return video.type === "Trailer";
+        }).key;
         setSelectedMovieTrailerLink(trailerKey);
       })
-      .catch((err) => {
-        setError("Error fetching movie video: " + err.message);
-      });
-  }
-  
-
-  useEffect(() => {
-    getSingleMovieApi();
-    getSingleMovieVideoApi();
-    setSelectedMovieObj(selectedMovieObj);
+      .catch((err) => console.log(err));
   }, []);
 
   function handleBackArrowClick() {

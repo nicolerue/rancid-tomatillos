@@ -32,9 +32,9 @@ function SearchBar({ setApiMovieData, setError}) {
       });
   }
 
-  useEffect(() => {
-    getMoviesFromApi();
-  }, [searchInput]);
+  // useEffect(() => {
+  //   getMoviesFromApi();
+  // }, [searchInput]);
 
   return (
     <div className="search-container">
