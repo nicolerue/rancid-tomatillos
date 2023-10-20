@@ -16,7 +16,7 @@ function Modal({
 }) {
   const paramsID = useParams();
   const navigate = useNavigate();
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [error, setErrorMessage] = useState('');
 
 
   function getSingleMovieApi() {
@@ -69,8 +69,8 @@ function Modal({
   }
   return (
     <div>
-      {setError ? (
-        <div className="error-message">{setError}</div>
+      {error ? (
+        <section className="error-message">{error}</section>
       ) : selectedMovieObj.movie ? (
         <div
           className="backdrop-image"

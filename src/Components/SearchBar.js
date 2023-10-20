@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function SearchBar({ setApiMovieData, setError}) {
   const [searchInput, setSearchInput] = useState("");
-
+  
   function handleInputChange(e) {
     setSearchInput(e.target.value);
     getMoviesFromApi();
