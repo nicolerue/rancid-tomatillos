@@ -13,13 +13,13 @@ function Display({
 }) {
   function getMoviesFromApi() {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then((res) => {
-        if (!res.ok) {
+      .then((response) => {
+        if (!response.ok) {
           throw new Error(
             "Oops! Something went wrong on the server. Please try again later."
           );
         } else {
-          return res.json();
+          return response.json();
         }
       })
       .then((data) => {
@@ -27,7 +27,6 @@ function Display({
       })
       .catch((error) => {
         setError(error.message || "An unknown error occurred.");
-        console.log(error);
       });
   }
 
