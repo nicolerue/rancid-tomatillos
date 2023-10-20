@@ -24,13 +24,11 @@ function Modal({
       .then(data => {
         setSelectedMovieObj(data);
       })
-     
-      .catch((err) => {
-        console.log(err);
-        navigate("*");
+
+      .catch(err => {
+        navigate('*');
       })
       .catch(err => console.log(err));
-
 
     getSingleMovieVideoApi(paramsID.id)
       .then(data => {
@@ -110,7 +108,14 @@ function Modal({
           </div>
         </div>
       ) : (
-        <h1>Loading...</h1>
+        <div className='loading-screen'>
+          <h1>Loading</h1>
+          <div id="img1" class="img"></div>
+          <div id="img2" class="img"></div>
+          <div id="img3" class="img"></div>
+          <div id="img4" class="img"></div>
+          <div id="img5" class="img"></div>
+        </div>
       )}
     </div>
   );
