@@ -28,9 +28,9 @@ function Modal({
       .catch((err) => {
         console.log(err);
         navigate("*");
-      });
-
+      })
       .catch(err => console.log(err));
+
 
     getSingleMovieVideoApi(paramsID.id)
       .then(data => {
