@@ -1,17 +1,17 @@
-import './App.scss';
-import Display from './Components/Display';
-import NavBar from './Components/NavBar';
-import Modal from './Components/Modal';
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import PageNotFound from './Components/PageNotFound';
+import "./App.scss";
+import Display from "./Components/Display";
+import NavBar from "./Components/NavBar";
+import Modal from "./Components/Modal";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import PageNotFound from "./Components/PageNotFound";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedMovieID, setSelectedMovieID] = useState('');
+  const [selectedMovieID, setSelectedMovieID] = useState("");
   const [apiMovieData, setApiMovieData] = useState([]);
   const [selectedMovieObj, setSelectedMovieObj] = useState({});
-  const [selectedMovieTrailerLink, setSelectedMovieTrailerLink] = useState('');
+  const [selectedMovieTrailerLink, setSelectedMovieTrailerLink] = useState("");
   const [error, setError] = useState(null);
 
   return (

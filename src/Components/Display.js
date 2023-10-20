@@ -12,9 +12,9 @@ function Display({
   setError,
   setApiMovieData,
 }) {
-
   useEffect(() => {
-    getMoviesFromApiDisplay().then((data) => {
+    getMoviesFromApiDisplay()
+      .then((data) => {
         setApiMovieData(data.movies);
       })
       .catch((error) => {

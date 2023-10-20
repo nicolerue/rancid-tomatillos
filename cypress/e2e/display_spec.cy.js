@@ -27,7 +27,7 @@ describe("When the user clicks on a movie image", () => {
     );
   });
 
-  it("it shows the movie details", () => {
+  it("shows the movie details", () => {
     cy.visit("http://localhost:3000/");
     cy.get("h1").should("contain", "Rancid Tomatillos");
     cy.get(".search-input").should("be.visible");

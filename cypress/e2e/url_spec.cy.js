@@ -35,4 +35,11 @@ describe("url changes when the user clicks a movie image and navigates back home
     cy.get(".backArrow").click();
     cy.url().should("not.include", "/724495");
   });
+
+  it("should return a 'page not found' error message to the user if the user navigates to a url that does not exist", () => {
+    cy.visit("http://localhost:3000/724495/123");
+    cy.get(".not-found").should("have.text", "Page Not Found!");
+    cy.visit("http://localhost:3000/123");
+    cy.get(".not-found").should("have.text", "Page Not Found!");
+  });
 });

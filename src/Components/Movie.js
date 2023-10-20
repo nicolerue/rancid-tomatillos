@@ -2,6 +2,7 @@ import StarRating from "./StarRating";
 import "./Movie.scss";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+
 function Movie({ movieObj, setModalIsOpen, modalIsOpen, setSelectedMovieID }) {
   const navigate = useNavigate();
 
