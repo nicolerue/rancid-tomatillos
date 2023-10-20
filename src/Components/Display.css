@@ -1,9 +1,0 @@
-@media screen and (max-width:20em) {
-  .movie-display {
-  display: "grid";
-  grid-template-columns: "1fr 1fr";
-  gap: "2rem";
-  margin-left: "2rem";
-  margin-right: "2rem"
-  }
-}
