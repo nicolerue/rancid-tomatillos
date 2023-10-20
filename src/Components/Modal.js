@@ -133,7 +133,7 @@ function Modal({
                 rating={Math.round(selectedMovieObj.movie.average_rating)}
               />
             </h2>
-            <h2>{selectedMovieObj.movie.overview}</h2>
+            <p className="overview">{selectedMovieObj.movie.overview}</p>
             {selectedMovieTrailerLink && (
               <YoutubeEmbedVideo
                 videoId={selectedMovieTrailerLink}
