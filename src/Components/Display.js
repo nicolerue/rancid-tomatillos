@@ -26,6 +26,7 @@ function Display({
 
   return (
     <div
+      className='movie-display'
       style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr 1fr",
@@ -53,10 +54,10 @@ function Display({
 export default Display;
 
 Display.propTypes = {
-  setModalIsOpen: PropTypes.func,
-  modalIsOpen: PropTypes.bool,
-  setSelectedMovieID: PropTypes.func,
-  apiMovieData: PropTypes.array,
-  setError: PropTypes.func,
-  setApiMovieData: PropTypes.func,
+  setModalIsOpen: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  setSelectedMovieID: PropTypes.func.isRequired,
+  apiMovieData: PropTypes.array.isRequired,
+  setError: PropTypes.func.isRequired,
+  setApiMovieData: PropTypes.func.isRequired
 };

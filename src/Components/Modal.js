@@ -59,13 +59,11 @@ function Modal({
           }}
         >
           <div
-            className="BackToDisplay"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+
+            className="BackToDisplay">
+
           >
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -73,7 +71,8 @@ function Modal({
               strokeWidth="1.5"
               stroke="currentColor"
               className="backArrow"
-              style={{ height: "100px", width: "100px" }}
+
+
               onClick={handleBackArrowClick}
             >
               <path
@@ -89,10 +88,6 @@ function Modal({
               src={selectedMovieObj.movie.poster_path}
               alt={selectedMovieObj.movie.title}
               className="movie-image"
-              style={{
-                width: "200px",
-                height: "300px",
-              }}
             />
             <div className="movie-title">{selectedMovieObj.movie.title}</div>
             <h2>
@@ -125,9 +120,9 @@ function Modal({
 export default Modal;
 
 Modal.propTypes = {
-  setModalIsOpen: PropTypes.func,
-  selectedMovieObj: PropTypes.object,
-  setSelectedMovieObj: PropTypes.func,
-  selectedMovieTrailerLink: PropTypes.string,
-  setSelectedMovieTrailerLink: PropTypes.func,
+  setModalIsOpen: PropTypes.func.isRequired,
+  selectedMovieObj: PropTypes.object.isRequired,
+  setSelectedMovieObj: PropTypes.func.isRequired,
+  selectedMovieTrailerLink: PropTypes.string.isRequired,
+  setSelectedMovieTrailerLink: PropTypes.func.isRequired
 };
