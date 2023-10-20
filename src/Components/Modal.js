@@ -5,6 +5,8 @@ import "./Modal.scss";
 import { useNavigate } from "react-router-dom";
 import YoutubeEmbedVideo from "youtube-embed-video";
 import PropTypes from "prop-types";
+import { getSingleMovieApi } from "./apiCalls";
+import { getSingleMovieVideoApi } from "./apiCalls";
 
 function Modal({
   setModalIsOpen,
@@ -16,36 +18,20 @@ function Modal({
   const paramsID = useParams();
   const navigate = useNavigate();
 
-  function getSingleMovieApi() {
-    fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}`
-    )
-      .then((res) => res.json())
+  useEffect(() => {
+    getSingleMovieApi(paramsID.id)
       .then((data) => {
         setSelectedMovieObj(data);
       })
       .catch((err) => console.log(err));
-  }
-
-  function getSingleMovieVideoApi() {
-    fetch(
-      `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${paramsID.id}/videos`
-    )
-      .then((res) => res.json())
+    getSingleMovieVideoApi(paramsID.id)
       .then((data) => {
-        const trailer = data.videos.find((video) => {
+        const trailerKey = data.videos.find((video) => {
           return video.type === "Trailer";
-        });
-        const trailerKey = trailer.key;
+        }).key;
         setSelectedMovieTrailerLink(trailerKey);
       })
       .catch((err) => console.log(err));
-  }
-
-  useEffect(() => {
-    getSingleMovieApi();
-    getSingleMovieVideoApi();
-    setSelectedMovieObj(selectedMovieObj);
   }, []);
 
   function handleBackArrowClick() {

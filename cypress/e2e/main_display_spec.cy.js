@@ -15,5 +15,3 @@ describe("user visiting the rancid tomatillos home page", () => {
     cy.get(".search-input").type("The").should("have.value", "The");
   });
 });
-
-// check for images
