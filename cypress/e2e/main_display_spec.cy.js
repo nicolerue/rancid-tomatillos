@@ -17,3 +17,5 @@ describe("user visiting the rancid tomatillos home page", () => {
 });
 
 // check for images
+//sad paths 
+

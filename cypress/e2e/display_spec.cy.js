@@ -42,7 +42,7 @@ describe('When the user clicks on a movie image', () => {
     cy.get('.overview').should('contain', 'p')
     cy.url().should('eq', 'http://localhost:3000/724495').wait(1000)
     cy.get('.backArrow').click()
-    // cy.url().should('eq', 'http://localhost:3000')
+   
     
   });
 

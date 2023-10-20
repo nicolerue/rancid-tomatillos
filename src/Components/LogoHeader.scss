@@ -18,3 +18,13 @@ h1 {
     font-family: 'Pixelify Sans', sans-serif;
     margin-top: 0;
 }
+
+@media screen and (max-width: 30em) {
+  h1 {
+    font-size: 20px;
+  }
+  .tomato-logo {
+    width: 5%;
+    height: 5%;
+  }
+} 
