@@ -2,6 +2,7 @@ import Movie from "./Movie";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { getMoviesFromApiDisplay } from "./apiCalls";
+import './Display.scss'
 
 function Display({
   setModalIsOpen,
@@ -26,13 +27,14 @@ function Display({
 
   return (
     <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr",
-        gap: "5rem",
-        marginLeft: "5rem",
-        marginRight: "5rem",
-      }}
+      className='movie-display'
+      // style={{
+      //   display: "grid",
+      //   gridTemplateColumns: "1fr 1fr 1fr 1fr",
+      //   gap: "5rem",
+      //   marginLeft: "5rem",
+      //   marginRight: "5rem",
+      // }}
     >
       {apiMovieData.map((movie) => {
         return (
@@ -53,10 +55,10 @@ function Display({
 export default Display;
 
 Display.propTypes = {
-  setModalIsOpen: PropTypes.func,
-  modalIsOpen: PropTypes.bool,
-  setSelectedMovieID: PropTypes.func,
-  apiMovieData: PropTypes.array,
-  setError: PropTypes.func,
-  setApiMovieData: PropTypes.func,
+  setModalIsOpen: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  setSelectedMovieID: PropTypes.func.isRequired,
+  apiMovieData: PropTypes.array.isRequired,
+  setError: PropTypes.func.isRequired,
+  setApiMovieData: PropTypes.func.isRequired
 };

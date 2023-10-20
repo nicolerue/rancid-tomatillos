@@ -1,5 +1,11 @@
+.backArrow {
+  height: 100px;
+  width: 100px;
+}
+
 .backArrow:hover {
   cursor: pointer;
+  
 }
 
 .movie-title {
@@ -22,4 +28,9 @@ h2 {
   font-size: 25px;
   font-weight: bolder;
   font-family: 'Pixelify Sans', sans-serif;
+}
+
+.movie-image {
+  width: 200px;
+  height: 300px;
 }

@@ -17,7 +17,7 @@ function Movie({ movieObj, setModalIsOpen, modalIsOpen, setSelectedMovieID }) {
         id={movieObj.id}
         src={movieObj.poster_path}
         alt={movieObj.title}
-        className="movieImg"
+        className="movie-img"
         style={{
           width: "200px",
           height: "300px",
@@ -34,8 +34,9 @@ function Movie({ movieObj, setModalIsOpen, modalIsOpen, setSelectedMovieID }) {
 }
 export default Movie;
 Movie.propTypes = {
-  movieObj: PropTypes.object,
-  setModalIsOpen: PropTypes.func,
-  modalIsOpen: PropTypes.bool,
-  setSelectedMovieID: PropTypes.func,
+  movieObj: PropTypes.object.isRequired,
+  setModalIsOpen: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  setSelectedMovieID: PropTypes.func.isRequired
+  
 };
