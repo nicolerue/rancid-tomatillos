@@ -1,13 +1,11 @@
-// background-image: url(#{$backdropPath})
+.backArrow {
+  height: 100px;
+  width: 100px;
+}
 
 .backArrow:hover {
   cursor: pointer;
   
-}
-
-.backArrow {
-  height: 100px;
-  width: 100px;
 }
 
 .movie-title {

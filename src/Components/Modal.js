@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import StarRating from "./StarRating";
-import { useParams } from "react-router-dom";
-import "./Modal.scss";
-import { useNavigate } from "react-router-dom";
-import YoutubeEmbedVideo from "youtube-embed-video";
-import PropTypes from "prop-types";
-import { getSingleMovieApi } from "./apiCalls";
-import { getSingleMovieVideoApi } from "./apiCalls";
+import { useEffect, useState } from 'react';
+import StarRating from './StarRating';
+import { useParams } from 'react-router-dom';
+import './Modal.scss';
+import { useNavigate } from 'react-router-dom';
+import YoutubeEmbedVideo from 'youtube-embed-video';
+import PropTypes from 'prop-types';
+import { getSingleMovieApi } from './apiCalls';
+import { getSingleMovieVideoApi } from './apiCalls';
 
 function Modal({
   setModalIsOpen,
@@ -18,27 +18,27 @@ function Modal({
 }) {
   const paramsID = useParams();
   const navigate = useNavigate();
-  const [error, setErrorMessage] = useState("");
+  const [error, setErrorMessage] = useState('');
 
   useEffect(() => {
     getSingleMovieApi(paramsID.id)
-      .then((data) => {
+      .then(data => {
         setSelectedMovieObj(data);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
     getSingleMovieVideoApi(paramsID.id)
-      .then((data) => {
-        const trailerKey = data.videos.find((video) => {
-          return video.type === "Trailer";
+      .then(data => {
+        const trailerKey = data.videos.find(video => {
+          return video.type === 'Trailer';
         }).key;
         setSelectedMovieTrailerLink(trailerKey);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }, []);
 
   function handleBackArrowClick() {
     setModalIsOpen(false);
-    navigate("/");
+    navigate('/');
   }
   return (
     <div>
@@ -48,22 +48,17 @@ function Modal({
         <div
           className="backdrop-image"
           style={{
-            display: "flex",
-            gap: "5rem",
-            color: "white",
-            height: "100vh",
+            display: 'flex',
+            gap: '5rem',
+            color: 'white',
+            height: '100vh',
             backgroundImage: `linear-gradient(
               rgba(15, 15, 15, 0.6),
               rgba(15, 15, 15, 0.6)
             ), url(${selectedMovieObj.movie.backdrop_path})`,
           }}
         >
-          <div
-
-            className="BackToDisplay">
-
-          >
-
+          <div className="BackToDisplay">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -71,8 +66,6 @@ function Modal({
               strokeWidth="1.5"
               stroke="currentColor"
               className="backArrow"
-
-
               onClick={handleBackArrowClick}
             >
               <path
@@ -96,7 +89,7 @@ function Modal({
               {selectedMovieObj.movie.release_date}
             </h2>
             <h2>
-              <span className="label">Average Rating:</span>{" "}
+              <span className="label">Average Rating:</span>{' '}
               <StarRating
                 rating={Math.round(selectedMovieObj.movie.average_rating)}
               />
@@ -124,5 +117,5 @@ Modal.propTypes = {
   selectedMovieObj: PropTypes.object.isRequired,
   setSelectedMovieObj: PropTypes.func.isRequired,
   selectedMovieTrailerLink: PropTypes.string.isRequired,
-  setSelectedMovieTrailerLink: PropTypes.func.isRequired
+  setSelectedMovieTrailerLink: PropTypes.func.isRequired,
 };

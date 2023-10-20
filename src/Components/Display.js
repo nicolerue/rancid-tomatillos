@@ -2,6 +2,7 @@ import Movie from "./Movie";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { getMoviesFromApiDisplay } from "./apiCalls";
+import './Display.scss'
 
 function Display({
   setModalIsOpen,
@@ -27,13 +28,13 @@ function Display({
   return (
     <div
       className='movie-display'
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr",
-        gap: "5rem",
-        marginLeft: "5rem",
-        marginRight: "5rem",
-      }}
+      // style={{
+      //   display: "grid",
+      //   gridTemplateColumns: "1fr 1fr 1fr 1fr",
+      //   gap: "5rem",
+      //   marginLeft: "5rem",
+      //   marginRight: "5rem",
+      // }}
     >
       {apiMovieData.map((movie) => {
         return (
