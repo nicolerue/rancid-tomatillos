@@ -23,6 +23,14 @@ describe('When the user clicks on a movie image', () => {
       'https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495/videos',
       {
         statusCode: 404,
+wip/separate-api-calls
+      }
+    );
+  });
+
+  it("it shows the movie details", () => {
+    cy.visit("http://localhost:3000/");
+
         // fixture: "single-movie-trailer-response",
       },
     );
@@ -35,6 +43,7 @@ describe('When the user clicks on a movie image', () => {
     cy.visit('http://localhost:3000/');
     cy.get('h1').should('contain', 'Rancid Tomatillos');
     cy.get('.search-input').should('be.visible');
+
     cy.get('[alt="The Woman King"]').click();
     cy.get('[alt="The Woman King"]').should('have.attr', 'src');
     cy.get('.backdrop-image').should('be.visible');
@@ -50,50 +59,3 @@ describe('When the user clicks on a movie image', () => {
 });
 
 
-// ATTEMPT AT STUBBING YOUTUBE ADS
-// describe("When movie image is clicked it shows", () => {
-//   beforeEach(() => {
-//     cy.intercept(
-//       "GET",
-//       "https://rancid-tomatillos.herokuapp.com/api/v2/movies",
-//       {
-//         statusCode: 200,
-//         fixture: "page-load-response",
-//       }
-//     );
-
-//     cy.intercept(
-//       "GET",
-//       "https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495",
-//       {
-//         statusCode: 200,
-//         fixture: "single-movie-response",
-//       }
-//     );
-
-//     cy.intercept(
-//       "GET",
-//       "https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495/videos",
-//       {
-//         statusCode: 200,
-//         fixture: "single-movie-trailer-response",
-//       }
-//     );
-//     cy.intercept("GET", "https://googleads.g.doubleclick.net/pagead/id", {
-//       statusCode: 404,
-//     });
-
-//     cy.intercept(
-//       "POST",
-//       "https://jnn-pa.googleapis.com/$rpc/google.internal.waa.v1.Waa/Create",
-//       {
-//         statusCode: 404,
-//       }
-//     );
-//   });
-
-//   it("it shows the movie details", () => {
-//     cy.visit("http://localhost:3000/");
-//     cy.get('[alt="The Woman King"]').click();
-//   });
-// });
