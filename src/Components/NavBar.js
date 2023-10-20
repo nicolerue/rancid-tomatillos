@@ -2,6 +2,7 @@ import "./NavBar.scss";
 import LogoHeader from "./LogoHeader";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function NavBar({ setApiMovieData, setError, apiMovieData }) {
   return (
@@ -19,3 +20,9 @@ function NavBar({ setApiMovieData, setError, apiMovieData }) {
 }
 
 export default NavBar;
+
+NavBar.propType = {
+  setApiMovieData: PropTypes.func.isRequired,
+  setError: PropTypes.func.isRequired,
+  apiMovieData: PropTypes.array.isRequired
+}

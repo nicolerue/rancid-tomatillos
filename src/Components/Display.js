@@ -12,14 +12,13 @@ function Display({
   setError,
   setApiMovieData,
 }) {
+
   useEffect(() => {
-    getMoviesFromApiDisplay()
-      .then((data) => {
+    getMoviesFromApiDisplay().then((data) => {
         setApiMovieData(data.movies);
       })
       .catch((error) => {
         setError(error.message || "An unknown error occurred.");
-        console.log(error);
       });
     setApiMovieData(apiMovieData);
     setModalIsOpen(false);

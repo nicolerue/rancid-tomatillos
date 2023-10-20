@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import "./SearchBar.scss";
+import PropTypes from "prop-types";
 
-function SearchBar({ setApiMovieData, setError, apiMovieData }) {
+function SearchBar({ setApiMovieData, setError}) {
   const [searchInput, setSearchInput] = useState("");
-
+  
   function handleInputChange(e) {
     setSearchInput(e.target.value);
     getMoviesFromApi();
@@ -28,7 +29,6 @@ function SearchBar({ setApiMovieData, setError, apiMovieData }) {
       })
       .catch((error) => {
         setError(error.message || "An unknown error occurred.");
-        console.log(error);
       });
   }
 
@@ -55,3 +55,8 @@ function SearchBar({ setApiMovieData, setError, apiMovieData }) {
 }
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+  setApiMovieData: PropTypes.func.isRequired,
+  setError: PropTypes.func.isRequired
+}
