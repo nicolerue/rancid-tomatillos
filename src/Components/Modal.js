@@ -14,7 +14,6 @@ function Modal({
   setSelectedMovieObj,
   selectedMovieTrailerLink,
   setSelectedMovieTrailerLink,
-  setError,
 }) {
   const paramsID = useParams();
   const navigate = useNavigate();
@@ -25,7 +24,14 @@ function Modal({
       .then(data => {
         setSelectedMovieObj(data);
       })
+     
+      .catch((err) => {
+        console.log(err);
+        navigate("*");
+      });
+
       .catch(err => console.log(err));
+
     getSingleMovieVideoApi(paramsID.id)
       .then(data => {
         const trailerKey = data.videos.find(video => {
