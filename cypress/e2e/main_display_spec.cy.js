@@ -12,7 +12,7 @@ describe("user visiting the rancid tomatillos home page", () => {
     cy.visit("http://localhost:3000/");
     cy.url().should("include", "");
     cy.get("h1").should("have.text", "Rancid Tomatillos");
-    cy.get(".search-input").type("The").should("have.value", "The");
+    cy.get('.search-input').should('be.visible').type("The").should("have.value", "The");
   });
 });
 
