@@ -111,11 +111,11 @@ function Modal({
       ) : (
         <div className="loading-screen">
           <h1>Loading</h1>
-          <div id="img1" class="img"></div>
-          <div id="img2" class="img"></div>
-          <div id="img3" class="img"></div>
-          <div id="img4" class="img"></div>
-          <div id="img5" class="img"></div>
+          <div id="img1" className="img"></div>
+          <div id="img2" className="img"></div>
+          <div id="img3" className="img"></div>
+          <div id="img4" className="img"></div>
+          <div id="img5" className="img"></div>
         </div>
       )}
     </div>
