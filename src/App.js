@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Display from "./Components/Display";
 import NavBar from "./Components/NavBar";
 import Modal from "./Components/Modal";
 import PageNotFound from "./Components/PageNotFound";
+import { getMoviesFromApiDisplay } from "./Components/apiCalls";
 import "./App.scss";
 
 function App() {
@@ -13,6 +14,18 @@ function App() {
   const [selectedMovieObj, setSelectedMovieObj] = useState({});
   const [selectedMovieTrailerLink, setSelectedMovieTrailerLink] = useState("");
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getMoviesFromApiDisplay()
+      .then((data) => {
+        setApiMovieData(data.movies);
+      })
+      .catch((error) => {
+        setError(error.message || "An unknown error occurred.");
+      });
+    setApiMovieData(apiMovieData);
+    setModalIsOpen(false);
+  }, []);
 
   return (
     <main>
