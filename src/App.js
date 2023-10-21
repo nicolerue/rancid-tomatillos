@@ -15,18 +15,6 @@ function App() {
   const [selectedMovieTrailerLink, setSelectedMovieTrailerLink] = useState("");
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    getMoviesFromApiDisplay()
-      .then((data) => {
-        setApiMovieData(data.movies);
-      })
-      .catch((error) => {
-        setError(error.message || "An unknown error occurred.");
-      });
-    setApiMovieData(apiMovieData);
-    setModalIsOpen(false);
-  }, []);
-
   return (
     <main>
       <NavBar
