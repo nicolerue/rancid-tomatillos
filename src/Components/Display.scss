@@ -6,10 +6,16 @@
   margin-right: 5rem;
 }
 
-@media screen and (max-width:747px) {
+@media screen and (max-width: 1260px) {
   .movie-display {
-  display: flex;
-  flex-direction: column
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
-} 
+}
 
+@media screen and (max-width: 747px) {
+  .movie-display {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,10 +1,10 @@
-import "./App.scss";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Display from "./Components/Display";
 import NavBar from "./Components/NavBar";
 import Modal from "./Components/Modal";
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import PageNotFound from "./Components/PageNotFound";
+import "./App.scss";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
