@@ -5,7 +5,7 @@ function LogoHeader() {
   return (
     <div className="header">
       <img className="tomato-logo" src={tomatoImage} alt="tomato-logo" />
-      <h1>Jen and Nicole</h1>
+      <h1>Rancid Tomatillos</h1>
     </div>
   );
 }
