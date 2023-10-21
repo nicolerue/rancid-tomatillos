@@ -1,40 +1,36 @@
-import { useState, useEffect } from "react";
-import "./SearchBar.scss";
-import PropTypes from "prop-types";
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import './SearchBar.scss';
 
-function SearchBar({ setApiMovieData, setError}) {
-  const [searchInput, setSearchInput] = useState("");
-  
+function SearchBar({ setApiMovieData, setError }) {
+  const [searchInput, setSearchInput] = useState('');
+
   function handleInputChange(e) {
     setSearchInput(e.target.value);
     getMoviesFromApi();
   }
 
   function getMoviesFromApi() {
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then((res) => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+      .then(res => {
         if (!res.ok) {
           throw new Error(
-            "Oops! Something went wrong on the server. Please try again later."
+            'Oops! Something went wrong on the server. Please try again later.',
           );
         } else {
           return res.json();
         }
       })
-      .then((data) => {
-        const filteredMovies = data.movies.filter((movie) => {
+      .then(data => {
+        const filteredMovies = data.movies.filter(movie => {
           return movie.title.toLowerCase().includes(searchInput);
         });
         setApiMovieData(filteredMovies);
       })
-      .catch((error) => {
-        setError(error.message || "An unknown error occurred.");
+      .catch(error => {
+        setError(error.message || 'An unknown error occurred.');
       });
   }
-
-  // useEffect(() => {
-  //   getMoviesFromApi();
-  // }, [searchInput]);
 
   return (
     <div className="search-container">
@@ -58,5 +54,5 @@ export default SearchBar;
 
 SearchBar.propTypes = {
   setApiMovieData: PropTypes.func.isRequired,
-  setError: PropTypes.func.isRequired
-}
+  setError: PropTypes.func.isRequired,
+};

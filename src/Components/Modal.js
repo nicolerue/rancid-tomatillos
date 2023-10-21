@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import StarRating from './StarRating';
 import { useParams } from 'react-router-dom';
-import './Modal.scss';
 import { useNavigate } from 'react-router-dom';
 import YoutubeEmbedVideo from 'youtube-embed-video';
 import PropTypes from 'prop-types';
+import StarRating from './StarRating';
 import { getSingleMovieApi } from './apiCalls';
 import { getSingleMovieVideoApi } from './apiCalls';
+import './Modal.scss';
 
 function Modal({
   setModalIsOpen,
@@ -108,7 +108,7 @@ function Modal({
           </div>
         </div>
       ) : (
-        <div className='loading-screen'>
+        <div className="loading-screen">
           <h1>Loading</h1>
           <div id="img1" class="img"></div>
           <div id="img2" class="img"></div>
