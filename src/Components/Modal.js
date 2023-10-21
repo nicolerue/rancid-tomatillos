@@ -26,7 +26,9 @@ function Modal({
       })
 
       .catch((err) => {
+
         navigate('*');
+
         console.log(err);
       })
       .catch((err) => console.log(err));

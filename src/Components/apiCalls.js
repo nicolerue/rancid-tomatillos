@@ -13,7 +13,7 @@ export function getMoviesFromApiDisplay() {
 }
 export function getSingleMovieApi(id) {
   return fetch(
-    `http://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`
+    `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`
   ).then((res) => {
     if (!res.ok) {
       throw new Error(
@@ -27,7 +27,7 @@ export function getSingleMovieApi(id) {
 
 export function getSingleMovieVideoApi(id) {
   return fetch(
-    `http://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`
+    `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`
   ).then((res) => {
     if (!res.ok) {
       throw new Error(
