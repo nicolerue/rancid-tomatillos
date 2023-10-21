@@ -21,7 +21,7 @@ h2 {
 }
 
 .label {
-  font-size: 25px;
+  font-size: 3vw;
   font-weight: bolder;
   font-family: 'Pixelify Sans', sans-serif;
 }
@@ -30,6 +30,8 @@ h2 {
   width: 200px;
   height: 300px;
 }
+
+
 
 .loading-screen {
   width: 100px;
@@ -49,17 +51,6 @@ h2 {
   top: 50%;
 }
 
-@keyframes up {
-  from {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 #img2 {
   width: 90px;
   height: 90px;
@@ -88,3 +79,16 @@ h2 {
   top: 52.8%;
   animation-delay: 0.8s;
 }
+
+@keyframes up {
+  from {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
