@@ -22,6 +22,8 @@ This was a pair project in mod 3 at Turing School of Software and Design, a seve
 - In your terminal, run npm install and then npm start
 - To view the site run npm start in your terminal (in the project directory foler) and it will open in your browser. 
 
+## Deployment 
+- Go to [Rancid Tomatillos](https://rancid-tomatillos-sepia.vercel.app/)
 ## Learning Goals
 
 - Gain competency with React fundamentals
@@ -49,8 +51,9 @@ This was a pair project in mod 3 at Turing School of Software and Design, a seve
 ## Challenges 
 - Architecture was a challenge that we 
 thoroughly researched and by the end of the project we had a much better understanding of how to structure our code. 
-- 
+- Deployment gave us a hard time which turned out to be a super simple fix but it's worth noting that we did learn something from it. 
+- User testing: Once we deployed we had a couple different users check the app on their phones to give us feedback on the user interface and experience. In doing this we discovered that we had a few things that needed adjusting for a better user experience, which included the sizing of the movie image and the text wrap on the movie overview text on the individual movie page. 
 
 ## Further development plans 
-- Fixing the architecture
+- Refactoring the architecture
 
