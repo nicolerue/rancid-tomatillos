@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import YoutubeEmbedVideo from 'youtube-embed-video';
-import PropTypes from 'prop-types';
-import StarRating from './StarRating';
-import { getSingleMovieApi } from './apiCalls';
-import { getSingleMovieVideoApi } from './apiCalls';
-import './Modal.scss';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import YoutubeEmbedVideo from "youtube-embed-video";
+import PropTypes from "prop-types";
+import StarRating from "./StarRating";
+import { getSingleMovieApi } from "./apiCalls";
+import { getSingleMovieVideoApi } from "./apiCalls";
+import "./Modal.scss";
 
 function Modal({
   setModalIsOpen,
@@ -17,32 +17,33 @@ function Modal({
 }) {
   const paramsID = useParams();
   const navigate = useNavigate();
-  const [error, setErrorMessage] = useState('');
+  const [error, setErrorMessage] = useState("");
 
   useEffect(() => {
     getSingleMovieApi(paramsID.id)
-      .then(data => {
+      .then((data) => {
         setSelectedMovieObj(data);
       })
 
-      .catch(err => {
-        navigate('*');
+      .catch((err) => {
+        // navigate('*');
+        console.log(err);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
 
     getSingleMovieVideoApi(paramsID.id)
-      .then(data => {
-        const trailerKey = data.videos.find(video => {
-          return video.type === 'Trailer';
+      .then((data) => {
+        const trailerKey = data.videos.find((video) => {
+          return video.type === "Trailer";
         }).key;
         setSelectedMovieTrailerLink(trailerKey);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
   function handleBackArrowClick() {
     setModalIsOpen(false);
-    navigate('/');
+    navigate("/");
   }
   return (
     <div>
@@ -52,10 +53,10 @@ function Modal({
         <div
           className="backdrop-image"
           style={{
-            display: 'flex',
-            gap: '5rem',
-            color: 'white',
-            height: '100vh',
+            display: "flex",
+            gap: "5rem",
+            color: "white",
+            height: "100vh",
             backgroundImage: `linear-gradient(
               rgba(15, 15, 15, 0.6),
               rgba(15, 15, 15, 0.6)
@@ -93,7 +94,7 @@ function Modal({
               {selectedMovieObj.movie.release_date}
             </h2>
             <h2>
-              <span className="label">Average Rating:</span>{' '}
+              <span className="label">Average Rating:</span>{" "}
               <StarRating
                 rating={Math.round(selectedMovieObj.movie.average_rating)}
               />
