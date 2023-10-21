@@ -1,5 +1,5 @@
 export function getMoviesFromApiDisplay() {
-  return fetch("http://rancid-tomatillos.herokuapp.com/api/v2/movies").then(
+  return fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies").then(
     (res) => {
       if (!res.ok) {
         throw new Error(

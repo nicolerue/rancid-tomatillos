@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import './SearchBar.scss';
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import "./SearchBar.scss";
 
 function SearchBar({ setApiMovieData, setError }) {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   function handleInputChange(e) {
     setSearchInput(e.target.value);
@@ -11,24 +11,24 @@ function SearchBar({ setApiMovieData, setError }) {
   }
 
   function getMoviesFromApi() {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-      .then(res => {
+    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
+      .then((res) => {
         if (!res.ok) {
           throw new Error(
-            'Oops! Something went wrong on the server. Please try again later.',
+            "Oops! Something went wrong on the server. Please try again later."
           );
         } else {
           return res.json();
         }
       })
-      .then(data => {
-        const filteredMovies = data.movies.filter(movie => {
-          return movie.title.toLowerCase().includes(searchInput);
+      .then((data) => {
+        const filteredMovies = data.movies.filter((movie) => {
+          return movie.title.toLowerCase().includes(searchInput.toLowerCase());
         });
         setApiMovieData(filteredMovies);
       })
-      .catch(error => {
-        setError(error.message || 'An unknown error occurred.');
+      .catch((error) => {
+        setError(error.message || "An unknown error occurred.");
       });
   }
 
