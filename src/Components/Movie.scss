@@ -3,7 +3,7 @@ h2 {
 }
 
 .movie {
-  box-shadow: 5px 5px 10px rgb(145, 137, 137); 
+  box-shadow: 5px 5px 10px rgb(145, 137, 137);
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -12,26 +12,26 @@ h2 {
 }
 
 .movie-img {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .overview {
   text-align: justify;
   font-size: 20px;
+  padding-right: 20px;
   width: 500%;
 }
 
-
 @media screen and (max-width: 768px) {
   .movie {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .movie-img {
-    width: 100vw; 
+    width: 100vw;
     max-width: 200vh;
     height: auto;
   }
@@ -39,7 +39,7 @@ h2 {
 
 .overview {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   width: 350px;
-  text-align: justify
+  text-align: justify;
 }
