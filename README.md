@@ -15,6 +15,11 @@ This was a pair project in mod 3 at Turing School of Software and Design, a seve
 
 ## Preview
 
+<img width="1069" alt="Screen Shot 2023-10-22 at 10 49 08 AM" src="https://github.com/nicolerue/rancid-tomatillos/assets/124186166/bc06172c-9b89-417d-a2b4-d8f9869120ea">
+<img width="508" alt="Screen Shot 2023-10-22 at 10 58 13 AM" src="https://github.com/nicolerue/rancid-tomatillos/assets/124186166/8cb4761a-cd3d-4fad-99e8-07afa077462b">
+<img width="346" alt="Screen Shot 2023-10-22 at 10 54 52 AM" src="https://github.com/nicolerue/rancid-tomatillos/assets/124186166/71ff1a2d-6b56-467b-9ca9-02267c80e1e7">
+<img width="508" alt="Screen Shot 2023-10-22 at 10 58 13 AM" src="https://github.com/nicolerue/rancid-tomatillos/assets/124186166/27ac38e6-2d1c-4a07-b37d-39eb957f976b">
+
 ## Setup
 
 - Clone down this repo to your local computer.
