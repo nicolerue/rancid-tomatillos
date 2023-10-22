@@ -26,8 +26,7 @@ function Modal({
       })
 
       .catch((err) => {
-
-        navigate('*');
+        navigate("*");
 
         console.log(err);
       })
@@ -106,6 +105,7 @@ function Modal({
               <YoutubeEmbedVideo
                 videoId={selectedMovieTrailerLink}
                 suggestions={false}
+                style={{ height: "100%", width: "100%" }}
               />
             )}
           </div>
